@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http:- 47.100.35.106:8084/
+HOST: http://47.100.35.106:8084/
 
 # 学工API
 
@@ -13,9 +13,9 @@ HOST: http:- 47.100.35.106:8084/
 + Sex:   `男`         (string)  -性别
 + Birth:       `1991-10-10`     (string) -生日 
 + Nationality:  `中国`    (string,required)      - 国籍
-+ Nation:           (string)         - 民族
-+ StudentType:      (string)     - 留学生、统招
-+ NativePlace:      (string)     - 籍贯
++ Nation:       `汉`    (string)         - 民族
++ StudentType:    `统招 `  (string)     - 留学生、统招
++ NativePlace:    `陕西`  (string)     - 籍贯
 + PlaceOfDomicile:  (string)  - 户籍所在地
 + IsFloat:          (string)         - 是否流动人口
 + Hukouxingzhi:     (string)     - 户口性质
@@ -36,15 +36,15 @@ HOST: http:- 47.100.35.106:8084/
 + Class:      (string)      - 班级
 + ClassId;    (string)    - 班内学号
 + KaoshengId; (string) - 考生号
-+ Cellphone; (string)
++ Cellphone; (string) -电话号码
 + Address;   (string)   - 家庭住址
 + Postcode;  (string)  - 邮政编码
 + Telephone; (string) - 固定电话
 + Email; (string) - 邮箱
-+ FatherName;   (string)
++ FatherName;   (string) -父亲姓名
 + FatherWorkPlace;  (string)
 + Fatherphone;  (string)
-+ MotherName;   (string)
++ MotherName;   (string) -母亲姓名
 + MontherWorkPlace; (string)
 + Montherphone; (string)
 + PinyinName;(string)
@@ -60,9 +60,9 @@ HOST: http:- 47.100.35.106:8084/
 + Weight:(string)- 体重
 
 ## Error400 (object)
-+ error
-    code: `BadArgument` (string) - 代码
-    message: `xxx is invalid` (string) - 原因
+
++    code: ` ` (string) - 结果状态
++    message: ` ` (string) - 原因
 
 # Group 学生
 ## 学生 [/students]
@@ -72,30 +72,106 @@ HOST: http:- 47.100.35.106:8084/
      + Attributes(array[StudentData])
   
 
+
 ###新增一个学生 [POST /students]
 
 
 + Request (application/json)
-
- 
-
+     + Attributes(StudentData)
 + Response 201 (application/json)
-
-    + Body
+    + Attributes(Error400)
 
             
 ### 获取一个指定学生 [GET /students/{id}]
+
 + Response 200 (application/json)
-+ Attributes(array[StudentData])
+    + Attributes(StudentData)
+    
++ Response 400 (application/json)
+    + Attributes(Error400)
+
 ### 删除一个指定学生 [DELETE /students/{id}]
++ Response 204 
 
 ### 修改一个指定学生 [PUT /students/{id}]
++ Response 200 (application/json)
+    + Attributes(StudentData)
+    
++ Response 400 (application/json)
+    + Attributes(Error400)
 
+    
 # Group 岗位
 ## 岗位 [/zhuxueposts]
 
-### 新增一个岗位 [POST /zhuxueposts]
 
+###获取所有岗位 [GET /students]
+
++ Response 200 (application/json)
+     + Attributes(array[StudentData])
+  
+
+
+###新增一个岗位 [POST /zhuxueposts]
+
+
++ Request (application/json)
+
++ Response 201 (application/json)
+    + Attributes(Error400)
+
+            
+### 获取一个指定岗位 [GET /zhuxueposts/{id}]
+
++ Response 200 (application/json)
+    + Attributes(StudentData)
+    
++ Response 400 (application/json)
+    + Attributes(Error400)
+
+### 删除一个指定岗位 [DELETE /zhuxueposts/{id}]
++ Response 204 
+
+### 修改一个指定岗位 [PUT /zhuxueposts/{id}]
++ Response 200 (application/json)
+    + Attributes(StudentData)
+    
++ Response 400 (application/json)
+    + Attributes(Error400)
+
+    
 # Group 企业
 ## 企业 [/zhuxuecompanys]
-### 新增一个企业 [POST /zhuxuecompanys]
+
+###获取所有企业 [GET /zhuxuecompanys]
+
++ Response 200 (application/json)
+     + Attributes(array[StudentData])
+  
+
+
+###新增一个企业 [POST /zhuxuecompanys]
+
+
++ Request (application/json)
+        
++ Response 201 (application/json)
+    + Attributes(Error400)
+
+            
+### 获取一个指定企业 [GET /zhuxuecompanys/{id}]
+
++ Response 200 (application/json)
+    + Attributes(StudentData)
+    
+
+
+### 删除一个指定企业 [DELETE /zhuxuecompanys/{id}]
++ Response 204 
+
+### 修改一个指定岗位 [PUT /zhuxuecompanys/{id}]
++ Response 200 (application/json)
+  + Attributes(Error400)
+    
++ Response 400 (application/json)
+    + Attributes(Error400)
