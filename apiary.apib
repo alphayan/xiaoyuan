@@ -108,8 +108,15 @@ HOST: http://47.100.35.106:8084/
 
 # Group 学生
 ## 学生 [/students]
-###获取所有学生 [GET /students]
-
+###获取所有学生 [GET /students{?name,grade,academy,class,shengyuanprovince,school_id,kaosheng_id}]
++ Parameters
+    + name: `` (string,optional) (string, optional) - 用户姓名
+    + grade: `0b4d4400-b78c-11e6-b23a-0242ac140009` (string, optional) - 年级
+    + academy: `0b4d4400-b78c-11e6-b23a-0242ac140009` (string, optional) - 院系
+    + class: (string, optional) - 班级
+    + shengyuanprovince: (string, optional) - 生源地
+    + school_id: (string, optional) - 学籍号
+    + kaoshengid: (string, optional)- 考生号
 + Response 200 (application/json)
      + Attributes(array[StudentData])
   
@@ -150,7 +157,7 @@ HOST: http://47.100.35.106:8084/
 ###获取所有岗位 [GET /students]
 
 + Response 200 (application/json)
-     + Attributes(array[StudentData])
+     + Attributes(array[ZhuxuePostData])
   
 
 
@@ -166,7 +173,7 @@ HOST: http://47.100.35.106:8084/
 ### 获取一个指定岗位 [GET /zhuxueposts/{id}]
 
 + Response 200 (application/json)
-    + Attributes(StudentData)
+    + Attributes(ZhuxuePostData)
     
 + Response 400 (application/json)
     + Attributes(Error400)
@@ -176,7 +183,7 @@ HOST: http://47.100.35.106:8084/
 
 ### 修改一个指定岗位 [PUT /zhuxueposts/{id}]
 + Response 200 (application/json)
-    + Attributes(StudentData)
+    + Attributes(ZhuxuePostData)
     
 + Response 400 (application/json)
     + Attributes(Error400)
@@ -188,7 +195,7 @@ HOST: http://47.100.35.106:8084/
 ###获取所有企业 [GET /zhuxuecompanys]
 
 + Response 200 (application/json)
-     + Attributes(array[StudentData])
+     + Attributes(array[ZhuxueCompanyData])
   
 
 
@@ -204,7 +211,7 @@ HOST: http://47.100.35.106:8084/
 ### 获取一个指定企业 [GET /zhuxuecompanys/{id}]
 
 + Response 200 (application/json)
-    + Attributes(StudentData)
+    + Attributes(ZhuxueCompanyData)
     
 
 
@@ -213,7 +220,7 @@ HOST: http://47.100.35.106:8084/
 
 ### 修改一个指定岗位 [PUT /zhuxuecompanys/{id}]
 + Response 200 (application/json)
-  + Attributes(Error400)
+    + Attributes(ZhuxueCompanyData)
     
 + Response 400 (application/json)
     + Attributes(Error400)
