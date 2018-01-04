@@ -1,80 +1,71 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://47.100.35.106:8084/
 
-# 校园API
+# 学工API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+学工后台API文档
+# Data Structures
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
+## StudentData(object)
++ Id: `DIRECTION_CD` (number, required) - 主键id
++ Name: `张三` (string,required) -姓名 
++ Sex:   `男`         (string)  -性别
++ Birth:       `1991-10-10`     (string) -生日 
++ Nationality:  `中国`    (string,required)      - 国籍
++ Nation:           (string)         - 民族
++ StudentType      string     //留学生、统招
++ NativePlace      string     //籍贯
++ PlaceOfDomicile  string  //户籍所在地
++ IsFloat          string         //是否流动人口
++ Hukouxingzhi     string     //户口性质
++ IdentityType     string     //身份证类型
++ Idcard           string          //身份证号码
++ Idardtime        string      //身份证件有效期
++ PoliticsType     string    //政治面貌
++ HealthState      string     //身体状况
++ Marriage         string `form:"marriage" orm:"null"`        //婚姻状况
++ Photo            string `form:"photo" orm:"null"`           //照片
++ IdentityPhoto1   string `form:"identityphoto1" orm:"null"`  //身份证正面图片
++ IdentityPhoto2   string `form:"identityphoto2" orm:"null"`  //身份证反面图片
++ StartSchooleTime string `form:"startschooltime" orm:"null"` //入学时间
+
+## Error400 (object)
++ error
+    code: `BadArgument` (string) - 代码
+    message: `xxx is invalid` (string) - 原因
+
+# Group 学生
+## 学生 [/students]
+###获取所有学生 [GET /students]
 
 + Response 200 (application/json)
+     + Attributes(array[StudentData])
+  
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+###新增一个学生 [POST /students]
 
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
 
 + Request (application/json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+ 
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Location: /questions/2
-
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+            
+### 获取一个指定学生 [GET /students/{id}]
+
+### 删除一个指定学生 [DELETE /students/{id}]
+
+### 修改一个指定学生 [PUT /students/{id}]
+
+# Group 岗位
+## 岗位 [/zhuxueposts]
+
+### 新增一个岗位 [POST /zhuxueposts]
+
+# Group 企业
+## 企业 [/zhuxuecompanys]
+### 新增一个企业 [POST /zhuxuecompanys]
