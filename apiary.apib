@@ -28,7 +28,7 @@ HOST: http://47.100.35.106:8084/
 + Photo:            (string)            - 照片
 + IdentityPhoto1:   (string) - 身份证正面图片
 + IdentityPhoto2:   (string) (string)  - 身份证反面图片
-+ StartSchooleTime (string) - 入学时间
++ StartSchooleTime: (string) - 入学时间
 + SchoolId:   (string)   - 学籍号
 + Grade:      (string)      - 年级
 + Academy:    (string)    - 院系
@@ -63,6 +63,48 @@ HOST: http://47.100.35.106:8084/
 
 +    code: ` ` (string) - 结果状态
 +    message: ` ` (string) - 原因
+
+
+## ZhuxuePostData(object)
++ Id:          `1`         (number,required) - 主键
++ WorkType:             ` ` (string)    - 工作类型 校内、企业实习、企业兼职
++ WorkFenlei:           ` ` (string)  - 工作分类
++ WorkPlace::            ` ` (string)   - 工作地点
++ WorkXingshi:          ` ` (string) - 工作形式
++ Worktime:             ` ` (string)
++ PaymentType:          ` ` (string)
++ Salary:               ` ` (string)
++ IsOffical:            ` ` (string)
++ Paytype:              ` ` (string)
++ PayChannel:           ` ` (string)
++ WorkDescribe:         ` ` (string)
++ PushCompany:          ` ` (string)
++ Responsible:          ` ` (string)          - 负责人
++ ResponsibleCellphone: ` ` (string) - 负责人联系方式
++ ResponsibleType:      ` ` (string)      - 负责人类型
++ WorkAccessory:        ` ` (string)        - 工作详情附件
++ Remark:               ` ` (string)
++ ValidityTime:         ` ` (string)
++ Number:               ` ` (string)
++ Status:               ` ` (string) - 岗位状态
+
+## ZhuxueCompanyData(object)
++ Id:          `1`         (number,required) - 主键
++ CompanyName:      ` ` (string) -企业名称
++ CompanyType:      ` ` (string) -
++ CompanyWeb:       ` ` (string) -
++ CompanyContacts:  ` ` (string) -
++ ContactCellphone: ` ` (string) -
++ CompanyEmail:     ` ` (string) -
++ CompanyTelphone:  ` ` (string) -
++ CompanyFax:       ` ` (string) -
++ CompanyAddr:      ` ` (string) -
++ CompanyPostcode:  ` ` (string) -
++ BusinessLicense:  ` ` (string) -
++ BusinessPhoto:    ` ` (string) -
++ Other:            ` ` (string) -
++ Remark:           ` ` (string) -
++ AuditStatus:      ` ` (string) - //审核状态
 
 # Group 学生
 ## 学生 [/students]
